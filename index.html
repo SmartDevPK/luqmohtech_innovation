@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luqmohtech Innovations Ltd – Bridging Knowledge and Technology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #0d5f5f;
+            --teal-dark: #094444;
+            --teal-deep: #062e2e;
+            --green: #8fbc3f;
+            --green-light: #b4d96a;
+            --offwhite: #f4f1eb;
+            --cream: #faf8f3;
+            --charcoal: #1a1a1a;
+            --mid: #555;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 1.2rem 4rem;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(244, 241, 235, 0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(13,95,95,0.08);
+            transition: padding 0.4s var(--ease);
+        }
+        nav.slim { padding: 0.7rem 4rem; }
+
+        .nav-logo {
+            display: flex; align-items: center; gap: 1rem;
+            text-decoration: none;
+        }
+        .nav-logo img { height: 54px; width: auto; }
+        .nav-logo-text {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800; font-size: 1.1rem;
+            color: var(--teal); line-height: 1.1;
+        }
+        .nav-logo-text span { display: block; font-weight: 400; font-size: 0.7rem; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600;
+            text-decoration: none; color: var(--charcoal);
+            letter-spacing: 0.05em; text-transform: uppercase;
+            position: relative; padding-bottom: 2px;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            height: 2px; width: 0; background: var(--green);
+            transition: width 0.35s var(--ease);
+        }
+        .nav-links a:hover { color: var(--teal); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active { color: var(--teal); }
+        .nav-links a.active::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--teal); color: white;
+            padding: 0.6rem 1.6rem; border-radius: 50px;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem;
+            text-decoration: none; transition: background 0.3s, transform 0.3s;
+        }
+        .nav-cta:hover { background: var(--green); transform: translateY(-2px); }
+
+        .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--teal); transition: 0.3s; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            position: relative; overflow: hidden;
+            padding-top: 90px;
+        }
+
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background: var(--teal-deep);
+            overflow: hidden;
+        }
+        .hero-bg video {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.35;
+        }
+        .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.g-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+.g-item img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    display:block;
+    transition:0.4s;
+}
+
+.g-item:hover img{
+    transform:scale(1.08);
+}
+
+.g-overlay{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:20px;
+    background:linear-gradient(transparent,rgba(0,0,0,0.8));
+    color:#fff;
+}
+
+.g-overlay h4{
+    margin:0;
+    font-size:18px;
+}
+
+.g-overlay span{
+    font-size:13px;
+    opacity:0.9;
+}
+
+        .hero-bg::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(6,46,46,0.85) 0%, rgba(13,95,95,0.6) 60%, rgba(143,188,63,0.15) 100%);
+        }
+
+        /* geometric decoration */
+        .hero-geo {
+            position: absolute; top: 0; right: 0;
+            width: 45%; height: 100%; z-index: 1;
+            pointer-events: none;
+        }
+        .hero-geo::before {
+            content: '';
+            position: absolute; top: 20%; right: -5%;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            border: 1px solid rgba(143,188,63,0.15);
+        }
+        .hero-geo::after {
+            content: '';
+            position: absolute; top: 30%; right: 5%;
+            width: 320px; height: 320px;
+            border-radius: 50%;
+            border: 1px solid rgba(143,188,63,0.2);
+        }
+
+        .hero-inner {
+            position: relative; z-index: 2;
+            max-width: 1200px; margin: 0 auto; padding: 5rem 4rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: rgba(143,188,63,0.15);
+            border: 1px solid rgba(143,188,63,0.35);
+            color: var(--green-light); padding: 0.4rem 1rem;
+            border-radius: 50px; font-size: 0.8rem; font-weight: 500;
+            margin-bottom: 1.5rem; letter-spacing: 0.05em;
+        }
+        .hero-badge i { font-size: 0.7rem; }
+
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            font-weight: 800; line-height: 1.05;
+            color: white; margin-bottom: 1.5rem;
+        }
+        .hero-title .highlight { color: var(--green-light); }
+
+        .hero-tagline {
+            font-size: 1rem; color: rgba(255,255,255,0.75);
+            line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem;
+        }
+
+        .hero-pills {
+            display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 2.5rem;
+        }
+        .hero-pill {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9);
+            padding: 0.4rem 0.9rem; border-radius: 50px; font-size: 0.82rem;
+        }
+        .hero-pill i { color: var(--green); }
+
+        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 0.85rem 2rem; border-radius: 50px;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem;
+            text-decoration: none; transition: all 0.35s var(--ease); cursor: pointer; border: none;
+        }
+        .btn-green { background: var(--green); color: white; }
+        .btn-green:hover { background: var(--green-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(143,188,63,0.4); }
+        .btn-outline { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.3); }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); transform: translateY(-3px); }
+
+        /* right side stats panel */
+        .hero-stats-panel {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px; padding: 2.5rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+        }
+        .stat-box { text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.05); border-radius: 16px; }
+        .stat-box .num {
+            font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.5rem;
+            color: var(--green-light); display: block;
+        }
+        .stat-box .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 0.3rem; }
+
+        .scroll-hint {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            color: rgba(255,255,255,0.5); font-size: 0.78rem; letter-spacing: 0.1em;
+            text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            z-index: 2; animation: bobble 2s ease-in-out infinite;
+        }
+        @keyframes bobble { 0%,100%{transform: translateX(-50%) translateY(0)} 50%{transform: translateX(-50%) translateY(-6px)} }
+
+        /* ── SECTION COMMONS ── */
+        section { padding: 7rem 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+
+        .sec-label {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.75rem;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--green); margin-bottom: 1rem;
+        }
+        .sec-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--green); }
+
+        h2.sec-title {
+            font-family: 'Syne', sans-serif; font-weight: 800;
+            font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1;
+            color: var(--teal-dark); margin-bottom: 1rem;
+        }
+        .sec-sub { font-size: 1rem; color: var(--mid); max-width: 580px; line-height: 1.7; }
+
+        /* ── WHAT WE DO ── */
+        #what-we-do { background: var(--cream); }
+
+        .what-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 4rem; flex-wrap: wrap; }
+
+        .services-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+        }
+
+        .svc-card {
+            background: white;
+            border-radius: 20px; padding: 2.2rem;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.4s var(--ease);
+            position: relative; overflow: hidden;
+        }
+        .svc-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--green));
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s var(--ease);
+        }
+        .svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.09); }
+        .svc-card:hover::before { transform: scaleX(1); }
+
+        .svc-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: rgba(13,95,95,0.08);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--teal); font-size: 1.3rem; margin-bottom: 1.3rem;
+            transition: all 0.3s;
+        }
+        .svc-card:hover .svc-icon { background: var(--teal); color: white; }
+
+        .svc-card h3 {
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem;
+            color: var(--teal-dark); margin-bottom: 0.7rem; line-height: 1.3;
+        }
+        .svc-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.65; }
+
+        /* featured card */
+        .svc-card.featured {
+            background: var(--teal);
+            grid-row: span 2;
+            display: flex; flex-direction: column; justify-content: flex-end;
+        }
+        .svc-card.featured .svc-icon { background: rgba(255,255,255,0.15); color: var(--green-light); }
+        .svc-card.featured:hover .svc-icon { background: var(--green); color: white; }
+        .svc-card.featured h3 { color: white; font-size: 1.3rem; }
+        .svc-card.featured p { color: rgba(255,255,255,0.75); }
+        .svc-card.featured::before { background: var(--green); transform: scaleX(1); }
+
+        /* mission strip */
+        .mission-strip {
+            margin-top: 4rem;
+            background: var(--teal);
+            border-radius: 24px; padding: 3rem;
+            display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;
+        }
+        .mission-strip .ms-item { flex: 1; min-width: 200px; }
+        .mission-strip .ms-item h4 {
+            font-family: 'Syne', sans-serif; font-weight: 800;
+            font-size: 1.1rem; color: var(--green-light); margin-bottom: 0.6rem;
+        }
+        .mission-strip .ms-item p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
+        .mission-sep { width: 1px; height: 80px; background: rgba(255,255,255,0.15); }
+
+        /* ── ABOUT ── */
+        #about { background: #f4f1eb; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+
+        .about-img-wrap {
+            position: relative; border-radius: 24px; overflow: hidden;
+            height: 500px;
+        }
+        .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .about-img-overlay {
+            position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+            background: rgba(6,46,46,0.88); backdrop-filter: blur(10px);
+            border-radius: 16px; padding: 1.5rem;
+            color: white; font-size: 0.88rem; line-height: 1.6;
+            border: 1px solid rgba(143,188,63,0.25);
+        }
+        .about-img-overlay strong { color: var(--green-light); font-family: 'Syne', sans-serif; font-size: 1rem; display: block; margin-bottom: 0.4rem; }
+
+        .about-content { display: flex; flex-direction: column; gap: 2rem; }
+        .about-content p { font-size: 0.97rem; color: var(--mid); line-height: 1.8; }
+
+        .values-list { display: flex; flex-direction: column; gap: 0.8rem; }
+        .val-row {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 0.9rem 1.2rem; border-radius: 12px;
+            background: white; border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s var(--ease);
+        }
+        .val-row:hover { background: var(--teal); }
+        .val-row:hover .val-icon, .val-row:hover .val-name { color: white; }
+        .val-icon { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--teal); transition: 0.3s; }
+        .val-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--teal-dark); transition: 0.3s; }
+        .val-desc { font-size: 0.82rem; color: var(--mid); margin-left: auto; text-align: right; max-width: 200px; transition: 0.3s; }
+        .val-row:hover .val-desc { color: rgba(255,255,255,0.75); }
+
+        /* why luqmohtech */
+        .why-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2rem; }
+        .why-card {
+            padding: 1.5rem; border-radius: 14px;
+            background: white; border: 1px solid rgba(0,0,0,0.06);
+            text-align: center; transition: all 0.3s var(--ease);
+        }
+        .why-card:hover { background: var(--teal); color: white; transform: translateY(-4px); }
+        .why-card:hover p { color: rgba(255,255,255,0.8); }
+        .why-card i { font-size: 1.5rem; color: var(--green); margin-bottom: 0.7rem; display: block; }
+        .why-card h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .why-card p { font-size: 0.8rem; color: var(--mid); line-height: 1.5; }
+
+        /* ── PROGRAMS ── */
+        #programs { background: var(--teal-deep); color: white; }
+        #programs h2.sec-title { color: white; }
+        #programs .sec-sub { color: rgba(255,255,255,0.65); }
+
+        .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+
+        .prog-card {
+            border-radius: 20px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s var(--ease);
+            background: rgba(255,255,255,0.04);
+        }
+        .prog-card:hover { transform: translateY(-8px); border-color: rgba(143,188,63,0.4); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+
+        .prog-card-head {
+            padding: 2.5rem 2rem 2rem;
+            background: linear-gradient(135deg, rgba(13,95,95,0.5), rgba(6,46,46,0.7));
+            position: relative;
+        }
+        .prog-card-head .prog-num {
+            font-family: 'Syne', sans-serif; font-weight: 800; font-size: 3.5rem;
+            color: rgba(143,188,63,0.2); position: absolute; top: 1rem; right: 1.5rem;
+            line-height: 1;
+        }
+        .prog-icon {
+            width: 56px; height: 56px; border-radius: 16px;
+            background: rgba(143,188,63,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--green-light); margin-bottom: 1.2rem;
+        }
+        
+        .prog-card-head h3 {
+            font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: white; line-height: 1.3;
+        }
+        .prog-card-body { padding: 1.8rem 2rem; }
+        .prog-card-body p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 1.5rem; }
+        .prog-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .prog-tag {
+            font-size: 0.75rem; padding: 0.3rem 0.8rem;
+            border-radius: 50px; border: 1px solid rgba(143,188,63,0.3);
+            color: var(--green-light);
+        }
+
+        /* ── PARTNERS ── */
+        #partners { background: var(--cream); }
+
+        .partners-header { text-align: center; margin-bottom: 3.5rem; }
+        .partners-header .sec-label { justify-content: center; }
+        .partners-header .sec-label::before { display: none; }
+        .partners-header .sec-label::after { content: ''; display: block; width: 24px; height: 2px; background: var(--green); }
+
+        .partners-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+        }
+        .partner-tile {
+            background: white; border-radius: 16px;
+            padding: 2rem 1.2rem;
+            display: flex; flex-direction: column; align-items: center; gap: 1rem;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s var(--ease);
+            text-align: center;
+        }
+        .partner-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); border-color: rgba(13,95,95,0.2); }
+        .partner-tile .partner-abbr {
+            width: 60px; height: 60px; border-radius: 14px;
+            background: var(--teal); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem;
+        }
+        .partner-tile .partner-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--teal-dark); line-height: 1.3; }
+        .partner-tile .partner-full { font-size: 0.72rem; color: var(--mid); }
+
+        /* ── GALLERY ── */
+        #gallery { background: #f0ede6; }
+
+        .gallery-tabs { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; }
+        .g-tab {
+            padding: 0.5rem 1.3rem; border-radius: 50px;
+            border: 1.5px solid rgba(13,95,95,0.2);
+            background: transparent; cursor: pointer;
+            font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.82rem;
+            color: var(--mid); transition: all 0.3s;
+        }
+        .g-tab.active, .g-tab:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 1rem;
+        }
+        .g-item {
+            border-radius: 16px; overflow: hidden;
+            background: var(--teal);
+            position: relative;
+            aspect-ratio: 4/3;
+            display: flex; align-items: flex-end;
+        }
+        /* .g-item:first-child { grid-column: span 1; grid-row: span 1; aspect-ratio: unset; } */
+       g-item .g-bg
+      .g-item .g-overlay{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:1.5rem;
+    background:linear-gradient(to top, rgba(6,46,46,0.9), transparent);
+    z-index:2;
+}
+        .g-item .g-overlay h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: white; }
+        .g-item .g-overlay span { font-size: 0.78rem; color: var(--green-light); }
+
+        /* ── TEAM ── */
+        #team { background: var(--teal-deep); color: white; }
+        #team h2.sec-title { color: white; }
+        #team .sec-sub { color: rgba(255,255,255,0.65); max-width: 700px; }
+
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+
+        .team-card {
+            border-radius: 20px; overflow: hidden;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.4s var(--ease);
+        }
+        .team-card:hover { transform: translateY(-8px); border-color: rgba(143,188,63,0.3); }
+
+        .team-photo {
+            height: 260px; overflow: hidden;
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .team-photo .placeholder-icon { font-size: 5rem; opacity: 0.2; color: white; }
+
+        .team-info { padding: 1.8rem; }
+        .team-info h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: white; margin-bottom: 0.3rem; }
+        .team-info .role { font-size: 0.82rem; color: var(--green-light); font-weight: 500; margin-bottom: 1.2rem; }
+        .team-socials { display: flex; gap: 0.6rem; }
+        .team-socials a {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: rgba(255,255,255,0.08);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.6); font-size: 0.8rem; text-decoration: none;
+            transition: all 0.3s;
+        }
+        .team-socials a:hover { background: var(--green); color: white; }
+
+        /* ── TESTIMONIALS ── */
+        #testimonials { background: var(--cream); }
+
+        .testi-track { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1.5rem; scrollbar-width: none; }
+        .testi-track::-webkit-scrollbar { display: none; }
+
+        .testi-card {
+            min-width: 360px; border-radius: 20px; padding: 2rem;
+            background: white; border: 1px solid rgba(0,0,0,0.06);
+            scroll-snap-align: start; flex-shrink: 0;
+        }
+        .testi-quote { font-size: 2rem; color: var(--green); line-height: 1; margin-bottom: 1rem; font-family: 'Syne', sans-serif; }
+        .testi-text { font-size: 0.92rem; color: var(--mid); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+        .testi-author { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--teal-dark); }
+        .testi-role { font-size: 0.78rem; color: var(--mid); }
+
+        /* ── CONTACT ── */
+        #contact { background: var(--teal-dark); color: white; }
+
+        .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+        .contact-left h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.4rem; color: white; margin-bottom: 1rem; }
+        .contact-left p { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 2.5rem; }
+
+        .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+        .ci {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 1.2rem; border-radius: 14px;
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+        }
+        .ci-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; flex-shrink: 0; }
+        .ci-info h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--green-light); margin-bottom: 0.3rem; }
+        .ci-info p, .ci-info a { font-size: 0.9rem; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.5; }
+        .ci-info a:hover { color: var(--green-light); }
+
+        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .form-group label { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.8rem; color: rgba(255,255,255,0.7); letter-spacing: 0.05em; text-transform: uppercase; }
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 0.85rem 1.1rem;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+            transition: border 0.3s; outline: none; resize: none;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--green); }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+        .form-group select { appearance: none; }
+        .form-group select option { background: var(--teal-dark); }
+        .btn-submit { align-self: flex-start; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--charcoal); padding: 4rem 0 2rem;
+        }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+
+        .footer-brand p { font-size: 0.85rem; color: #888; line-height: 1.7; margin: 1rem 0 1.5rem; max-width: 260px; }
+        .footer-brand .ft-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--green-light); }
+
+        .footer-col h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; color: white; margin-bottom: 1.2rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-col a { font-size: 0.85rem; color: #888; text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--green-light); }
+
+        .ft-socials { display: flex; gap: 0.7rem; }
+        .ft-social {
+            width: 36px; height: 36px; border-radius: 8px;
+            background: rgba(255,255,255,0.07);
+            display: flex; align-items: center; justify-content: center;
+            color: #aaa; font-size: 0.85rem; text-decoration: none;
+            transition: all 0.3s;
+        }
+        .ft-social:hover { background: var(--green); color: white; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem;
+            display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .footer-bottom p { font-size: 0.8rem; color: #666; }
+        .footer-bottom .ft-tagline { font-style: italic; color: var(--green-light); font-size: 0.8rem; }
+
+        /* back to top */
+        .btt {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--teal); color: white;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            opacity: 0; pointer-events: none;
+            transition: all 0.3s var(--ease);
+        }
+        .btt.visible { opacity: 1; pointer-events: auto; }
+        .btt:hover { background: var(--green); transform: translateY(-3px); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            nav { padding: 1rem 2rem; }
+            nav.slim { padding: 0.7rem 2rem; }
+            .container { padding: 0 2rem; }
+            .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
+            .hero-stats-panel { grid-template-columns: repeat(4, 1fr); }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .svc-card.featured { grid-row: span 1; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img-wrap { height: 350px; }
+            .programs-grid { grid-template-columns: 1fr; }
+            .partners-grid { grid-template-columns: repeat(4, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+            .why-cards { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            nav.slim { padding: 0.7rem 1.5rem; }
+            .container { padding: 0 1.5rem; }
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+            .nav-mobile-open .nav-links {
+                display: flex; flex-direction: column;
+                position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+                background: var(--cream); align-items: center; justify-content: center;
+                gap: 2rem; z-index: 999;
+            }
+            .nav-mobile-open .nav-links a { font-size: 1.5rem; }
+            .hero-inner { padding: 3rem 1.5rem; }
+            .hero-stats-panel { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .g-item:first-child { grid-column: span 1; }
+            .team-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .form-row { grid-template-columns: 1fr; }
+            .mission-strip { flex-direction: column; }
+            .mission-sep { width: 80px; height: 1px; }
+            .partners-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* scroll reveal */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: 0.1s; }
+        .reveal-d2 { transition-delay: 0.2s; }
+        .reveal-d3 { transition-delay: 0.3s; }
+        .reveal-d4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
+    <a class="nav-logo" href="#home">
+        <img src="1770285189697.png" alt="Luqmohtech Logo" onerror="this.style.display='none'">
+        <div class="nav-logo-text">
+            LUQMOHTECH
+            <span>Innovations Ltd</span>
+        </div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#what-we-do">What We Do</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="nav-cta">Get In Touch</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="home">
+    <div class="hero-bg">
+        <video autoplay muted loop playsinline>
+            <source src="sec hero.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-geo"></div>
+
+    <div class="hero-inner">
+        <div class="hero-left">
+            <div class="hero-badge"><i class="fas fa-circle-dot"></i> RC No. 9000994 · Abuja, Nigeria</div>
+            <h1 class="hero-title">
+                Bridging <span class="highlight">Knowledge</span> and Technology
+            </h1>
+            <p class="hero-tagline">
+                Nigeria's premier ICT &amp; AI solutions company — empowering youth, organizations, and governments through digital innovation, training, and cutting-edge software.
+            </p>
+            <div class="hero-pills">
+                <span class="hero-pill"><i class="fas fa-robot"></i> AI &amp; Machine Learning</span>
+                <span class="hero-pill"><i class="fas fa-users"></i> Youth Empowerment</span>
+                <span class="hero-pill"><i class="fas fa-chalkboard-teacher"></i> Digital Training</span>
+                <span class="hero-pill"><i class="fas fa-cloud"></i> Cloud &amp; Data</span>
+            </div>
+            <div class="hero-btns">
+                <a href="#programs" class="btn btn-green"><i class="fas fa-play"></i> Explore Programs</a>
+                <a href="#about" class="btn btn-outline"><i class="fas fa-info-circle"></i> About Us</a>
+            </div>
+        </div>
+
+        <div class="hero-stats-panel">
+            <div class="stat-box"><span class="stat-num" data-target="50">0</span><div class="lbl">Projects Completed</div></div>
+            <div class="stat-box"><span class="stat-num" data-target="15">0</span><div class="lbl">Satisfied Clients</div></div>
+            <div class="stat-box"><span class="stat-num" data-target="8">0</span><div class="lbl">Team Members</div></div>
+            <div class="stat-box"><span class="stat-num" data-target="5">0</span><div class="lbl">Years Experience</div></div>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- ═══════ WHAT WE DO ═══════ -->
+<section id="what-we-do">
+    <div class="container">
+        <div class="what-header">
+            <div>
+                <div class="sec-label">What We Do</div>
+                <h2 class="sec-title">Technology That Creates<br>Real Impact</h2>
+            </div>
+            <p class="sec-sub">From AI solutions and smart governance to capacity building and custom software — we deliver end-to-end digital transformation across every sector.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="svc-card featured reveal">
+                <div class="svc-icon"><i class="fas fa-robot"></i></div>
+                <h3>Artificial Intelligence &amp; Machine Learning</h3>
+                <p>We design and deploy intelligent systems — from predictive analytics to NLP solutions — that automate processes and drive smarter decision-making for Nigerian businesses and government agencies.</p>
+            </div>
+
+            <div class="svc-card reveal reveal-d1">
+                <div class="svc-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>ICT Consultancy &amp; Smart Governance</h3>
+                <p>Helping public institutions transition to efficient, transparent digital governance through tailored ICT strategy and implementation.</p>
+            </div>
+
+            <div class="svc-card reveal reveal-d2">
+                <div class="svc-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Software &amp; Mobile App Development</h3>
+                <p>Bespoke web and mobile applications built to solve real problems — from MVP to enterprise-grade platforms.</p>
+            </div>
+
+            <div class="svc-card reveal reveal-d1">
+                <div class="svc-icon"><i class="fas fa-cloud"></i></div>
+                <h3>Cloud Systems &amp; Data Analytics</h3>
+                <p>Cloud migration, infrastructure automation, and data dashboards that give organizations actionable insight.</p>
+            </div>
+
+            <div class="svc-card reveal reveal-d2">
+                <div class="svc-icon"><i class="fas fa-server"></i></div>
+                <h3>ICT Infrastructure &amp; Smart Solutions</h3>
+                <p>Network design, IoT deployments, and smart city solutions built for reliability and scale.</p>
+            </div>
+
+            <div class="svc-card reveal reveal-d3">
+                <div class="svc-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3>Digital Innovation &amp; Research</h3>
+                <p>Applied research and prototyping to surface the next generation of digital products for Africa's economy.</p>
+            </div>
+        </div>
+
+        <div class="mission-strip reveal">
+            <div class="ms-item">
+                <h4>Our Mission</h4>
+                <p>Empower Nigeria through sustainable ICT and AI programs that bridge the digital divide and create transformative opportunities for youth and organizations.</p>
+            </div>
+            <div class="mission-sep"></div>
+            <div class="ms-item">
+                <h4>Our Vision</h4>
+                <p>To be a leading African ICT and AI solutions company empowering communities and governments through technology and knowledge.</p>
+            </div>
+            <div class="mission-sep"></div>
+            <div class="ms-item">
+                <h4>Our Call to Action</h4>
+                <p>Ready to start your digital transformation journey? Partner with us to build scalable, human-centered technology solutions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-wrap reveal">
+                <img src="rm373batch2-04.jpg" alt="Luqmohtech Team at work" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80'">
+                <div class="about-img-overlay">
+                    <strong>Luqmohtech Innovations Ltd</strong>
+                    A premier ICT and management consulting firm (RC No. 9000994) dedicated to digital innovation, research, and multidisciplinary capacity building across Nigeria.
+                </div>
+            </div>
+
+            <div class="about-content">
+                <div class="reveal">
+                    <div class="sec-label">About Us</div>
+                    <h2 class="sec-title">Company Background</h2>
+                    <p>Founded with a singular purpose — to harness the power of technology for national development — LUQMOHTECH INNOVATIONS LTD has grown into a trusted ICT partner for government agencies, development organizations, and private enterprises across Nigeria. Headquartered in Jos, Plateau State, we operate with a pan-Nigeria mandate and a vision for African-wide impact.</p>
+                </div>
+
+                <div class="reveal reveal-d1">
+                    <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--teal-dark);margin-bottom:1rem;">Why LUQMOHTECH?</h3>
+                    <div class="why-cards">
+                        <div class="why-card">
+                            <i class="fas fa-certificate"></i>
+                            <h4>Fully Compliant</h4>
+                            <p>Registered with NITDA, NSITF, SCUML, ITF &amp; PENCOM</p>
+                        </div>
+                        <div class="why-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Local Expertise</h4>
+                            <p>Deep understanding of Nigeria's technology landscape</p>
+                        </div>
+                        <div class="why-card">
+                            <i class="fas fa-globe-africa"></i>
+                            <h4>African Vision</h4>
+                            <p>Building solutions that scale across the continent</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal reveal-d2">
+                    <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--teal-dark);margin-bottom:1rem;">Our Core Values</h3>
+                    <div class="values-list">
+                        <div class="val-row">
+                            <div class="val-icon"><i class="fas fa-lightbulb"></i></div>
+                            <span class="val-name">Innovation</span>
+                            <span class="val-desc">Creativity at the heart of everything</span>
+                        </div>
+                        <div class="val-row">
+                            <div class="val-icon"><i class="fas fa-shield-alt"></i></div>
+                            <span class="val-name">Integrity</span>
+                            <span class="val-desc">Transparency &amp; accountability</span>
+                        </div>
+                        <div class="val-row">
+                            <div class="val-icon"><i class="fas fa-chart-line"></i></div>
+                            <span class="val-name">Impact</span>
+                            <span class="val-desc">Measurable community change</span>
+                        </div>
+                        <div class="val-row">
+                            <div class="val-icon"><i class="fas fa-users"></i></div>
+                            <span class="val-name">Inclusiveness</span>
+                            <span class="val-desc">Youth, women &amp; disadvantaged groups</span>
+                        </div>
+                        <div class="val-row">
+                            <div class="val-icon"><i class="fas fa-handshake"></i></div>
+                            <span class="val-name">Partnership</span>
+                            <span class="val-desc">Collaboration with institutions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ PROGRAMS ═══════ -->
+<section id="programs">
+    <div class="container">
+        <div class="sec-label" style="color:var(--green-light);">Our Programs</div>
+        <h2 class="sec-title">Building Nigeria's Digital Future,<br>One Program at a Time</h2>
+        <p class="sec-sub">Structured initiatives that equip individuals and institutions with the skills and tools to thrive in the digital economy.</p>
+
+        <div class="programs-grid">
+            <div class="prog-card reveal">
+                <div class="prog-card-head">
+                    <span class="prog-num">01</span>
+                    <div class="prog-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI Youth Empowerment Program</h3>
+                </div>
+                <div class="prog-card-body">
+                    <p>Equipping young Nigerians with hands-on Artificial Intelligence and Machine Learning skills through structured bootcamps, mentorship, and project-based learning — enabling them to build AI-powered solutions for local challenges.</p>
+                    <div class="prog-tags">
+                        <span class="prog-tag">Machine Learning</span>
+                        <span class="prog-tag">Python</span>
+                        <span class="prog-tag">Data Science</span>
+                        <span class="prog-tag">Mentorship</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prog-card reveal reveal-d1">
+                <div class="prog-card-head">
+                    <span class="prog-num">02</span>
+                    <div class="prog-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Digital Skills Training</h3>
+                </div>
+                <div class="prog-card-body">
+                    <p>Comprehensive training programs in web development, mobile apps, cloud computing, and data analytics for individuals, SMEs, and government staff — building a workforce ready for the Fourth Industrial Revolution.</p>
+                    <div class="prog-tags">
+                        <span class="prog-tag">Web Dev</span>
+                        <span class="prog-tag">Cloud</span>
+                        <span class="prog-tag">Mobile Apps</span>
+                        <span class="prog-tag">Analytics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prog-card reveal reveal-d2">
+                <div class="prog-card-head">
+                    <span class="prog-num">03</span>
+                    <div class="prog-icon"><i class="fas fa-building"></i></div>
+                    <h3>Capacity Building for Institutions</h3>
+                </div>
+                <div class="prog-card-body">
+                    <p>Tailored organizational development and technology adoption programs for government agencies, NGOs, and corporations — transforming institutional processes through knowledge transfer and change management.</p>
+                    <div class="prog-tags">
+                        <span class="prog-tag">Gov Agencies</span>
+                        <span class="prog-tag">NGOs</span>
+                        <span class="prog-tag">Consulting</span>
+                        <span class="prog-tag">Change Mgmt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ PARTNERS & COMPLIANCE ═══════ -->
+<section id="partners">
+    <div class="container">
+        <div class="partners-header">
+            <div class="sec-label">Partners &amp; Compliance</div>
+            <h2 class="sec-title" style="text-align:center;">Certified. Compliant. Trusted.</h2>
+            <p class="sec-sub" style="text-align:center;margin:0 auto;">LUQMOHTECH is fully registered and compliant with Nigeria's key regulatory and development bodies, ensuring you partner with a credible, accountable institution.</p>
+        </div>
+
+        <div class="partners-grid">
+            <div class="partner-tile reveal">
+                <div class="partner-abbr">NSITF</div>
+                <div class="partner-name">Nigeria Social Insurance Trust Fund</div>
+                <div class="partner-full">Registered Member</div>
+            </div>
+            <div class="partner-tile reveal reveal-d1">
+                <div class="partner-abbr" style="background:var(--green);">SCUML</div>
+                <div class="partner-name">Special Control Unit Against Money Laundering</div>
+                <div class="partner-full">Compliant</div>
+            </div>
+            <div class="partner-tile reveal reveal-d2">
+                <div class="partner-abbr">TAX</div>
+                <div class="partner-name">Tax Clearance Certificate</div>
+                <div class="partner-full">Current &amp; Valid</div>
+            </div>
+            <div class="partner-tile reveal reveal-d1">
+                <div class="partner-abbr" style="background:var(--teal-dark);">NITDA</div>
+                <div class="partner-name">National IT Development Agency</div>
+                <div class="partner-full">Accredited</div>
+            </div>
+            <div class="partner-tile reveal reveal-d2">
+                <div class="partner-abbr" style="background:var(--green);">ITF</div>
+                <div class="partner-name">Industrial Training Fund</div>
+                <div class="partner-full">Certified Training Provider</div>
+            </div>
+            <div class="partner-tile reveal reveal-d3">
+                <div class="partner-abbr" style="background:var(--teal-dark);">PENCOM</div>
+                <div class="partner-name">National Pension Commission</div>
+                <div class="partner-full">Compliant</div>
+            </div>
+            <div class="partner-tile reveal reveal-d2">
+                <div class="partner-abbr">BPP</div>
+                <div class="partner-name">Bureau of Public Procurement</div>
+                <div class="partner-full">Registered Vendor</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ GALLERY ═══════ -->
+<section id="gallery">
+    <div class="container">
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem;">
+            <div>
+                <div class="sec-label">Gallery</div>
+                <h2 class="sec-title">Moments of Impact</h2>
+            </div>
+
+            <div class="gallery-tabs">
+                <button class="g-tab active" data-cat="all">All</button>
+                <button class="g-tab" data-cat="trainings">Trainings</button>
+                <button class="g-tab" data-cat="events">Events</button>
+                <button class="g-tab" data-cat="workshops">Workshops</button>
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+
+            <!-- Image 1 -->
+            <div class="g-item" data-cat="trainings">
+                <img src="AI.png" alt="AI for National Development">
+                <div class="g-overlay">
+                    <h4>AI for National Development</h4>
+                    <span>Trainings · Oct 2025</span>
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="g-item" data-cat="events">
+                <img src="snartAi.webp" alt="Smart Agriculture Launch">
+                <div class="g-overlay">
+                    <h4>Smart Agriculture Launch</h4>
+                    <span>Events · Sep 2025</span>
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="g-item" data-cat="events">
+                <img src="theroothub.jpg" alt="Jos Tech Hub Opening">
+                <div class="g-overlay">
+                    <h4>Jos Tech Hub Opening</h4>
+                    <span>Events · Aug 2025</span>
+                </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="g-item" data-cat="workshops">
+                <img src="bootcamp.png" alt="Digital Skills Bootcamp">
+                <div class="g-overlay">
+                    <h4>Digital Skills Bootcamp</h4>
+                    <span>Workshops · Jul 2025</span>
+                </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="g-item" data-cat="events">
+                <img src="sumit.jpg" alt="Youth Empowerment Summit">
+                <div class="g-overlay">
+                    <h4>Youth Empowerment Summit</h4>
+                    <span>Events · Jun 2025</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════ TEAM ═══════ -->
+<section id="team">
+    <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header">
+            <div class="sec-label" style="color:var(--green-light);">Leadership</div>
+            <h1 class="page-title">Our Management Team</h1>
+            <h2 class="sec-title">The People Behind the Vision</h2>
+            <p class="sec-sub">
+                Our leadership brings together decades of combined expertise in ICT,
+                digital innovation, engineering, and youth empowerment across Nigeria
+                and beyond.
+            </p>
+        </div>
+
+        <div class="team-grid">
+
+            <!-- CEO -->
+            <div class="team-card reveal">
+                <div class="team-photo">
+                    <img src="ABUBAKAR.jpg" alt="Dr. Abubakar Yakubu Abdullahi"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder-icon" style="display:none;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="team-info">
+                    <h3>Dr. Abubakar Yakubu Abdullahi</h3>
+                    <div class="role">Chief Executive Officer (CEO)</div>
+
+                    <p>
+                        Dr. Abubakar Yakubu Abdullahi is a visionary leader and technology
+                        advocate dedicated to advancing digital innovation and youth
+                        empowerment. He leads the organization in delivering impactful
+                        programs that promote ICT development, digital skills, and
+                        sustainable national growth.
+                    </p>
+
+                    <div class="team-socials">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="mailto:abubakar99987@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program Director -->
+            <div class="team-card reveal reveal-d1">
+                <div class="team-photo">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="team-info">
+                    <h3>Idris Umar</h3>
+                    <div class="role">Program Director</div>
+
+                    <p>
+                        Idris Umar oversees program strategy and implementation,
+                        ensuring that initiatives are effectively executed and
+                        aligned with the organization's mission of empowering
+                        communities through technology, innovation, and
+                        digital capacity building.
+                    </p>
+
+                    <div class="team-socials">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Director R&D -->
+            <div class="team-card reveal reveal-d2">
+                <div class="team-photo">
+                    <img src="RUEBEN.jpg" alt="Engr. Rueben Kudu"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder-icon" style="display:none;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="team-info">
+                    <h3>Engr. Rueben Kudu</h3>
+                    <div class="role">Director of R&amp;D</div>
+
+                    <p>
+                        Engr. Rueben Kudu leads research and development efforts,
+                        focusing on innovative technology solutions, digital
+                        infrastructure, and emerging technologies that support
+                        sustainable development and technological advancement.
+                    </p>
+
+                    <div class="team-socials">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════ TESTIMONIALS ═══════ -->
+<section id="testimonials">
+    <div class="container">
+        <div class="sec-label">Satisfied Customers</div>
+        <h2 class="sec-title">What Clients Say</h2>
+        <p class="sec-sub" style="margin-bottom:2.5rem;">We take pride in delivering excellence. Here's what some of our valued partners say.</p>
+
+        <div class="testi-track">
+            <div class="testi-card">
+                <div class="testi-quote">"</div>
+                <p class="testi-text">Luqmohtech transformed our digital infrastructure with their AI solutions. Their team's expertise is second to none in Nigeria.</p>
+                <div class="testi-author">Federal Ministry of ICT</div>
+                <div class="testi-role">Government Partner</div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-quote">"</div>
+                <p class="testi-text">The capacity building program for our youth was exceptionally well-structured. We've seen immediate positive impact across the community.</p>
+                <div class="testi-author">State Youth Development Agency</div>
+                <div class="testi-role">Development Partner</div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-quote">"</div>
+                <p class="testi-text">Reliable, innovative, and professional. They are our go-to partner for all things cloud and data analytics.</p>
+                <div class="testi-author">TechFrontier Solutions</div>
+                <div class="testi-role">Corporate Client</div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-quote">"</div>
+                <p class="testi-text">Working with Luqmohtech on our smart governance initiative was seamless. They truly understand the Nigerian public sector.</p>
+                <div class="testi-author">Plateau State Government</div>
+                <div class="testi-role">Government Client</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-wrap">
+            <div class="contact-left reveal">
+                <div class="sec-label" style="color:var(--green-light);">Contact Us</div>
+                <h2>Let's Build Something<br>Together</h2>
+                <p>Whether you're a government agency, development organization, or private enterprise — we're ready to help you harness technology for real impact. Reach out and let's talk.</p>
+
+                <div class="contact-items">
+                    <div class="ci">
+                        <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="ci-info">
+                            <h4>Phone</h4>
+                            <p>08034231415 &nbsp;·&nbsp; 08024438892</p>
+                            <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:0.2rem;">Mon – Fri, 9AM – 5PM</p>
+                        </div>
+                    </div>
+                    <div class="ci">
+                        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="ci-info">
+                            <h4>Email</h4>
+                            <a href="mailto:abubakar99987@gmail.com">abubakar99987@gmail.com</a>
+                            <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:0.2rem;">We respond within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="ci">
+                        <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="ci-info">
+                            <h4>Address</h4>
+                            <p>37 Murtala Way, Jos<br>Plateau State, Nigeria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form reveal reveal-d2">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="you@example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Organization</label>
+                    <input type="text" placeholder="Your company or agency">
+                </div>
+                <div class="form-group">
+                    <label>Service of Interest</label>
+                    <select>
+                        <option value="">Select a service…</option>
+                        <option>AI &amp; Machine Learning</option>
+                        <option>ICT Consultancy</option>
+                        <option>Software Development</option>
+                        <option>Digital Skills Training</option>
+                        <option>Cloud &amp; Data Analytics</option>
+                        <option>Capacity Building</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="Tell us about your project or needs…"></textarea>
+                </div>
+                <a href="mailto:abubakar99987@gmail.com" class="btn btn-green btn-submit"><i class="fas fa-paper-plane"></i> Send Message</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="ft-logo">LUQMOHTECH</div>
+                <p>Bridging Knowledge and Technology for a Smarter Nation. Leading ICT &amp; AI solutions company empowering Nigeria and beyond.</p>
+                <div class="ft-socials">
+                    <a href="#" class="ft-social"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="ft-social"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="ft-social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="ft-social"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#what-we-do">What We Do</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#partners">Compliance Docs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:08034231415">08034231415</a></li>
+                    <li><a href="tel:08024438892">08024438892</a></li>
+                    <li><a href="mailto:abubakar99987@gmail.com">abubakar99987@gmail.com</a></li>
+                    <li><a href="#">37 Murtala Way, Jos</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 LUQMOHTECH INNOVATIONS LTD. All Rights Reserved. RC No. 9000994</p>
+            <p class="ft-tagline">"Bridging Knowledge and Technology for a Smarter Nation"</p>
+        </div>
+    </div>
+</footer>
+
+<a href="#home" class="btt" id="btt"><i class="fas fa-chevron-up"></i></a>
+
+<script>
+// ── Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('slim', window.scrollY > 60);
+    document.getElementById('btt').classList.toggle('visible', window.scrollY > 400);
+});
+
+// ── Mobile menu
+const hamburger = document.getElementById('hamburger');
+hamburger.addEventListener('click', () => {
+    document.body.classList.toggle('nav-mobile-open');
+});
+document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => {
+    document.body.classList.remove('nav-mobile-open');
+}));
+
+// ── Active nav link
+const sections = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+const setActive = () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+    navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+};
+window.addEventListener('scroll', setActive, { passive: true });
+
+// ── Stat counter
+const counters = document.querySelectorAll('.stat-num');
+let counted = false;
+const runCounters = () => {
+    if (counted) return;
+    const box = counters[0]?.getBoundingClientRect();
+    if (box && box.top < window.innerHeight) {
+        counted = true;
+        counters.forEach(el => {
+            const target = +el.dataset.target;
+            let c = 0;
+            const inc = target / 60;
+            const timer = setInterval(() => {
+                c += inc;
+                el.textContent = Math.min(Math.floor(c), target);
+                if (c >= target) clearInterval(timer);
+            }, 25);
+        });
+    }
+};
+window.addEventListener('scroll', runCounters, { passive: true });
+runCounters();
+
+// ── Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => ro.observe(el));
+
+// ── Gallery tabs (visual only)
+document.querySelectorAll('.g-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.g-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+    });
+});
+
+// ── Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+</body>
+</html>
